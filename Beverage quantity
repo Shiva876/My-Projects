@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(void) 
+{
+  int num=3,count=0;
+  int no_of_bottles;
+  int capacity;
+  int temp=0;
+  scanf("%d",&no_of_bottles);
+  int arr[no_of_bottles];
+  for(int ind=0 ; ind<no_of_bottles ; ind++)
+  {
+    scanf("%d",&arr[ind]);
+  }
+  scanf("%d",&capacity);
+  printf("Combinations:");
+  for(int ind=0 ; ind<no_of_bottles ; ind++)
+  {
+    for(int ind1=ind+1 ; ind1<no_of_bottles ; ind1++)
+    {
+      for(int ind2=ind1+1 ; ind2<no_of_bottles ; ind2++)
+      {
+       if(arr[ind]+arr[ind1]+arr[ind2]==capacity)
+       {
+        count++;
+        temp=1;
+        printf("\n%d %d %d",arr[ind],arr[ind1],arr[ind2]);
+        arr[ind]=arr[ind1]=arr[ind2]=0;
+       }
+      }
+    }
+  }
+  printf("\nTotal Combinations available:%d",count);
+  if(temp==1)
+    printf("\nTRUE");
+  else
+    printf("\nFALSE");
+
+  return 0;
+}
