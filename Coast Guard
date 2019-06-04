@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main(void) 
+{
+  int rows,columns,ind,ind1;
+  int no_of_boats;
+  int d_pos,d1_pos;
+  int sqr_count1=0,sqr_count2=0,count=0;
+  int r,c;
+  int places=1;
+  scanf("%d%d",&rows,&columns);
+  scanf("%d",&no_of_boats);
+  int arr[rows][columns],pos[rows][columns];
+  for(ind=0 ; ind<no_of_boats ; ind++)
+  {
+    scanf("%d%d",&r,&c);
+    arr[r][c]=1;
+    //printf("%d %d:%d",r,c,arr[r][c]);
+  }
+  for(ind=0 ; ind<rows ; ind++)
+  {
+    for(ind1=0 ; ind1<columns ; ind1++)
+    {
+      if(arr[ind][ind1]==1 && ind1==c)
+      {
+        arr[ind+1][ind1]=1;
+        arr[ind][ind1]=0;
+        sqr_count1++;
+        continue;
+      }
+      if(arr[ind][ind1]==1 && ind==r)
+      {
+        arr[ind][ind1+1]=1;
+        arr[ind][ind1]=0;
+        sqr_count2++;
+        continue;
+      }
+      if(sqr_count1==sqr_count2)
+        count++;
+    }
+  }
+  printf("%d",count/no_of_boats);
+  return 0;
+}
