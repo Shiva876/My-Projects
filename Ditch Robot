@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+int main(void) {
+  int test;
+  printf("Enter the test case : ");
+  scanf("%d",&test);
+  while(test--)
+  {
+  int f,b,t,fd,bd;
+  printf("Enter the inputs : ");
+  scanf("%d %d %d %d %d",&f,&b,&t,&fd,&bd);
+  if(f>b)
+  {
+    int steps=0,count=0;
+    while(steps<fd)
+    {
+      for(int i=1;i<=f&&steps<fd;i++)
+      {           
+        count = count+t;
+        steps=steps+1;
+      }
+      if(steps>fd)
+      break;
+      for(int i=1;i<=b&&steps<fd;i++)
+      {
+        count = count + t;
+        steps = steps-1;
+      }
+    }
+    printf(" %d ",count);
+    printf(" F \n");
+  }
+  else if(b>f)
+  {
+    int steps=0,count=0;
+    while(steps>(-bd))
+    {
+      for(int i=1;i<=f&&steps>(-bd);i++)
+      {           
+        count = count+t;
+        steps=steps+1;
+      }
+      if(steps<(-bd))
+      break;
+      for(int i=1;i<=b&&steps>(-bd);i++)
+      {
+        count = count + t;
+        steps = steps-1;
+      }
+    }
+    printf(" %d ",count);
+    printf(" B \n");
+  }
+  else
+  {
+    if(f>fd)
+    printf("%d F\n",t*fd);
+    else if(b>bd)
+    printf("%d B\n",t*bd);
+    else
+    printf("No Ditch\n");
+  }
+  }
+  return 0;
+}
