@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main(void) 
+{
+  int n,r,c;
+  scanf("%d",&n);
+  for(r=0 ; r<n ; r++)
+  {
+    for(int ind=r ; ind<n-1 ; ind++)
+      printf(" ");
+    for(c=0 ; c<n ; c++)
+    {
+      if(r==0 || r==n-1 || c==0 || c==n-1)
+        printf("*");
+      else
+        printf(" ");
+    }
+    printf("\n");
+  }
+  return 0;
+}
